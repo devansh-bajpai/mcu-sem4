@@ -16,7 +16,7 @@ void sendSensorData(float temp, float hum, int light) {
     WiFiClient client;  // HTTP (not HTTPS)
     HTTPClient http;
 
-    String url = "http://172.20.10.3:5001/getData";  // <-- change this
+    String url = "http://10.85.249.204:5001/getData";  // <-- change this
 
     http.begin(client, url);
     http.addHeader("Content-Type", "application/json");

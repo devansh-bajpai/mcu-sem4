@@ -6,6 +6,8 @@ const morgan = require("morgan");
 
 const recommendRouter = require("./routes/recommend");
 
+let sensorData = {temperature: 0, humidity: 0, light: 0};
+
 const app = express();
 app.use(express.json());
 const PORT = process.env.PORT || 5000;
@@ -29,9 +31,14 @@ app.get("/api/health", (_req, res) =>
 app.post("/getData", (req, res) => {
   const {temperature, humidity, light} = req.body;
 
+  sensorData = {temperature, humidity, light};
+
   console.log("Received data:", { temperature, humidity, light });
 });
 
+app.get("/getSensorData", (req, res) => {
+  res.json(sensorData);
+});
 
 app.use((_req, res) => res.status(404).json({ error: "Route not found" }));
 

@@ -5,6 +5,8 @@ import SensorChart from "./components/SensorChart";
 import HistoryTable from "./components/HistoryTable";
 import "./App.css";
 
+import SensorDataCard from "./components/SensorDataCard";
+
 const API = process.env.REACT_APP_API_URL || "http://localhost:5001/api";
 
 const randomSensor = () => ({
@@ -97,6 +99,9 @@ export default function App() {
       </header>
 
       <main className="main">
+
+        <SensorDataCard/>
+
         <section className="section">
           <h2 className="section-title">Sensor Input</h2>
           <form onSubmit={handleSubmit} className="sensor-grid">
